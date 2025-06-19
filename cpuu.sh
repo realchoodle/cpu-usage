@@ -1,14 +1,17 @@
 #!/bin/bash
 
+# Read /proc/stat once
+cpu_stat=$(head -n 1 /proc/stat)
+
 # T1
-t1_total=$(head -n 1 /proc/stat | awk '{
+t1_total=$(echo "${cpu_stat}" | awk '{
   sum=0;
   for (i=2; i<=NF; i++)
     sum+=$i;
   print sum 
 }')
 
-t1_idle=$(head -n 1 /proc/stat | awk '{
+t1_idle=$(echo "${cpu_stat}" | awk '{
   t_idle=$5+$6;
   print t_idle
 }')
@@ -19,14 +22,14 @@ t1_busy=$((${t1_total} - ${t1_idle}))
 sleep 1
 
 # T2
-t2_total=$(head -n 1 /proc/stat | awk '{
+t2_total=$(echo "${cpu_stat}" | awk '{
   sum=0;
   for (i=2; i<=NF; i++)
     sum+=$i;
   print sum 
 }')
 
-t2_idle=$(head -n 1 /proc/stat | awk '{
+t2_idle=$(echo "${cpu_stat}" | awk '{
   t_idle=$5+$6;
   print t_idle
 }')
