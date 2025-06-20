@@ -48,5 +48,4 @@ d_idle=$((${t2_idle} - ${t1_idle}))
 d_total=$((${t2_total} - ${t1_total}))
 
 # Percentage of d_total that was busy
-usage=$(echo "(${d_busy}/${d_total}) * 100" | bc -l)
-echo "${usage}"
+awk -v db=${d_busy} dt=${d_total} '{u=db / dt * 100; print u}'
