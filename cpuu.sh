@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# TODO:
+# - [ ] Get rid of `bc`.
+# - [ ] Fix unnecessary `awk` calls.
+# - [ ] Format script for use in `swaybar`.
+
 # Read /proc/stat once
 t1_stat=$(head -n 1 /proc/stat)
 
