@@ -1,3 +1,3 @@
-## cpu-usage
+## Update
 
-A Bash script to help monitor CPU usage.
+Okay I have to learn awk first lmao
